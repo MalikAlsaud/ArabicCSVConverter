@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محول النصوص العربية</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PyScript Core -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h2>محول الكلمات العربية للعبة Witcher 3</h2>
+            <button id="theme-toggle" class="theme-toggle">🌙</button>
+        </div>
+
+        <!-- أزرار التنقل بين الأداتين -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" data-tab="csv-section">📄 محول CSV</button>
+            <button class="tab-btn" data-tab="words-section">🔤 إعادة تشكيل الكلمات</button>
+        </div>
+
+        <p id="status">⏳ جارٍ تهيئة بيئة Python... يرجى الانتظار.</p>
+
+        <!-- القسم الأول: محول CSV -->
+        <div id="csv-section" class="tab-content active">
+            <div class="file-wrapper">
+                <input type="file" id="file-input" accept=".csv" disabled>
+                <label for="file-input" id="file-label" class="disabled">📁 اختر ملف CSV</label>
+            </div>
+
+            <br>
+            <button id="download-btn" disabled>تحميل ملف CSV المحول</button>
+            <pre id="output"></pre>
+        </div>
+
+        <!-- القسم الثاني: إعادة تشكيل الكلمات -->
+        <div id="words-section" class="tab-content">
+            <div class="reshaping-box">
+                <label for="arabic-input" class="input-label">📝 أدخل النص العربي:</label>
+                <textarea id="arabic-input" class="arabic-textarea" placeholder="اكتب النص العربي هنا..."></textarea>
+                
+                <button id="reshape-btn" class="reshape-button" disabled>🔄 إعادة تشكيل النص</button>
+                
+                <div id="output-wrapper" style="display: none;">
+                    <label class="input-label" style="margin-top: 15px;">📝 النص المعاد تشكيله:</label>
+                    <div id="reshaped-output" class="reshaped-result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- استدعاء ملفات البايثون -->
+    <script type="py" src="ArabicConverterCSV.py" config='{"packages": ["arabic-reshaper"]}'></script>
+    <script type="py" src="ArabicConverterWords.py" config='{"packages": ["arabic-reshaper"]}'></script>
+    <script src="app.js"></script>
+</body>
+</html>

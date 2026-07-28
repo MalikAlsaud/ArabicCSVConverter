@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0a0a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+    background: #f0f0f0;
+}
+
+.container {
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+    border: 1px solid #2a2a2a;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+body.light-mode .container {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #2a2a2a;
+}
+
+body.light-mode .header {
+    border-bottom: 2px solid #ddd;
+}
+
+h2 {
+    color: #e0e0e0;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+body.light-mode h2 {
+    color: #1a1a1a;
+}
+
+.theme-toggle {
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    color: #e0e0e0;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+body.light-mode .theme-toggle {
+    background: #e0e0e0;
+    border: 1px solid #ccc;
+    color: #1a1a1a;
+}
+
+/* Tabs Navigation */
+.nav-tabs {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    padding: 10px 24px;
+    background: #111;
+    border: 1px solid #2a2a2a;
+    color: #888;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+body.light-mode .tab-btn {
+    background: #e5e5e5;
+    border-color: #ccc;
+    color: #555;
+}
+
+.tab-btn:hover {
+    color: #e0e0e0;
+    border-color: #d4af37;
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, #d4af37, #b8960f);
+    color: #0a0a0a;
+    border-color: #d4af37;
+}
+
+/* Tab Contents Toggle */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+#status {
+    color: #aaa;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #111;
+    border-radius: 6px;
+    border: 1px solid #222;
+}
+
+/* File Upload & Download */
+.file-wrapper {
+    margin: 20px 0;
+}
+
+#file-input {
+    display: none;
+}
+
+#file-label {
+    display: inline-block;
+    padding: 14px 40px;
+    background: #ffffff;
+    color: #0a0a0a;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#file-label.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#download-btn, .reshape-button {
+    padding: 14px 40px;
+    background: linear-gradient(135deg, #d4af37, #b8960f);
+    color: #0a0a0a;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    width: 100%;
+}
+
+#download-btn:disabled, .reshape-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#output {
+    margin-top: 20px;
+    padding: 15px;
+    background: #0d0d0d;
+    border-radius: 8px;
+    border: 1px solid #222;
+    color: #b0b0b0;
+    font-family: monospace;
+    white-space: pre-wrap;
+    max-height: 250px;
+    overflow-y: auto;
+    text-align: left;
+    direction: ltr;
+}
+
+/* Reshaper Styles */
+.reshaping-box {
+    text-align: right;
+}
+
+.input-label {
+    display: block;
+    color: #e0e0e0;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+body.light-mode .input-label {
+    color: #1a1a1a;
+}
+
+.arabic-textarea {
+    width: 100%;
+    padding: 15px;
+    background: #0d0d0d;
+    color: #e0e0e0;
+    border: 2px solid #2a2a2a;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    min-height: 120px;
+    resize: vertical;
+    direction: rtl;
+    text-align: right;
+}
+
+body.light-mode .arabic-textarea {
+    background: #f5f5f5;
+    color: #1a1a1a;
+    border-color: #ddd;
+}
+
+.reshaped-result {
+    padding: 18px;
+    background: #0d0d0d;
+    border-radius: 8px;
+    border: 2px solid #2a2a2a;
+    min-height: 60px;
+    color: #e0e0e0;
+    font-size: 1.4rem;
+    direction: ltr;
+    text-align: right;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+body.light-mode .reshaped-result {
+    background: #f5f5f5;
+    color: #1a1a1a;
+    border-color: #ddd;
+}
